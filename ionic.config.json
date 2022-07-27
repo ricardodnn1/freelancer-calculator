@@ -1,0 +1,7 @@
+{
+  "name": "calculadoraFreelancer",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

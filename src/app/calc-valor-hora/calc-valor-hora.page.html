@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start" defaultHref="/home">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Calcule o seu valor/hora</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="frmCalcValHora">
+    <ion-list>
+      <ion-item class="info">Quanto você quer ganhar por mês?</ion-item>
+      <ion-item>        
+        <ion-label fixed>Quantidade por mês:</ion-label>
+        <ion-input type="number" [(ngModel)]="valorHora.qtdePorMes" formControlName="qtdePorMes"></ion-input>
+      </ion-item>
+
+      <ion-item class="info">Quantas horas você quer trabalhar por dia?</ion-item>
+      <ion-item>        
+        <ion-label fixed>Horas por dia:</ion-label>
+        <ion-input type="number" [(ngModel)]="valorHora.horasPorDia" formControlName="horasPorDia"></ion-input>
+      </ion-item>
+      
+      <ion-item class="info">Quantos dias você quer trabalhar por semana?</ion-item>
+      <ion-item>
+        <ion-label fixed>Dias por semana:</ion-label>
+        <ion-input type="number" [(ngModel)]="valorHora.diasPorSemana" formControlName="diasPorSemana"></ion-input>
+      </ion-item>
+      
+      <ion-item class="info">Quantas semanas por ano você quer tirar de <br />férias?</ion-item>
+      <ion-item>        
+        <ion-label fixed>Semanas por ano:</ion-label>
+        <ion-input type="number" [(ngModel)]="valorHora.semanasPorAno" formControlName="semanasPorAno"></ion-input>
+      </ion-item>
+      
+    </ion-list>
+  </form>
+  <div padding>
+    <table>
+      <tr>
+        <td>
+          <ion-button color="secondary" (click)="onSubmit()" expand="block" [disabled]="frmCalcValHora.invalid"> calcular
+          </ion-button>
+        </td>
+        <td>
+          <ion-button color="danger" (click)="resetForm()" expand="block" [disabled]="frmCalcValHora.invalid"> Limpar
+          </ion-button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <ion-card *ngIf="result">
+    <ion-card-header>O seu novo valor por hora</ion-card-header>
+    <ion-card-content>
+      {{ media }}
+    </ion-card-content>
+  </ion-card>
+</ion-content>
